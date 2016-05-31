@@ -1,6 +1,23 @@
 #!/bin/bash
 # Este archivo fue creado con "oasproj init" y será sobre-escrito con "oasproj update --force"
+
 set -eu
+
 # cosas para hacer antes de instalar el paquete aquí:
-#
+
 echo OAS before install
+
+echo Verificando existencia de certificados para Docker Swarm
+
+if [ ! -e "/etc/docker/certs.d/ca.pem" -o ! -e "/etc/docker/certs.d/cert.pem" -o ! -e "/etc/docker/certs.d/key.pem" ]
+then
+  fqdn="$(hostname -f)"
+  echo
+  echo
+  echo
+  echo "No se encuentran los certificados del nodo en /etc/docker/certs.d/ generar en oas-ci-server con el comando '/usr/sbin/swarm-manage-cert-create ${fqdn}' luego traer los archivos de oas-ci-server '/var/lib/docker-swarm-certs/${fqdn}/*' hasta este servidor en la ruta '/etc/docker/certs.d/' finalmente cambiar el archivo '/etc/swarm-manage/nodes' en oas-ci-server agregando la linea ${fqdn}:2376, para terminar reinicie el servicio swarm-manager en oas-ci-server"
+  echo
+  echo
+  echo
+  exit 1
+fi

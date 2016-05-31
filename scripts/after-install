@@ -1,6 +1,30 @@
 #!/bin/bash
 # Este archivo fue creado con "oasproj init" y será sobre-escrito con "oasproj update --force"
+
 set -eu
+
 # cosas para hacer después de instalar el paquete aquí:
-#
+
 echo OAS after install
+
+echo Configurando e iniciando Docker
+
+cat > /etc/sysconfig/docker-network << EOF
+# creado por el paquete oas-ci-agent
+DOCKER_NETWORK_OPTIONS="-H tcp://0.0.0.0:2376 -H unix:///var/run/docker.sock --tlsverify --tlscacert=/etc/docker/certs.d/ca.pem --tlscert=/etc/docker/certs.d/cert.pem --tlskey=/etc/docker/certs.d/key.pem"
+EOF
+
+systemctl enable docker
+systemctl start docker
+
+if [ -e /usr/lib/systemd/system/swarm-manage.service ]
+then
+  systemctl enable swarm-manage
+  systemctl start swarm-manage
+fi
+
+if [ -e /usr/lib/systemd/system/drone.service ]
+then
+  systemctl enable drone
+  systemctl start drone
+fi
