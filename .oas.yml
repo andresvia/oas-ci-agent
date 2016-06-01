@@ -12,3 +12,4 @@ build_dependencies:
 - ruby
 - rpm-build
 - ruby-devel
+sign_package: true
