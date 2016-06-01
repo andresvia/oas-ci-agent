@@ -28,3 +28,9 @@ then
   systemctl enable drone
   systemctl start drone
 fi
+
+if [ -e /usr/lib/systemd/system/gogs.service ]
+then
+  systemctl enable gogs
+  systemctl start gogs
+fi
