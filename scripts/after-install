@@ -16,21 +16,3 @@ EOF
 
 systemctl enable docker
 systemctl start docker
-
-if [ -e /usr/lib/systemd/system/swarm-manage.service ]
-then
-  systemctl enable swarm-manage
-  systemctl start swarm-manage
-fi
-
-if [ -e /usr/lib/systemd/system/drone.service ]
-then
-  systemctl enable drone
-  systemctl start drone
-fi
-
-if [ -e /usr/lib/systemd/system/gogs.service ]
-then
-  systemctl enable gogs
-  systemctl start gogs
-fi
