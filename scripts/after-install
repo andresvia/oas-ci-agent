@@ -16,5 +16,5 @@ EOF
 
 cat > /etc/sysconfig/docker-storage << EOF
 # creado por el paquete oas-ci-agent
-DOCKER_STORAGE_OPTIONS="-s overlay"
+DOCKER_STORAGE_OPTIONS="-s overlay --selinux-enabled=false"
 EOF
