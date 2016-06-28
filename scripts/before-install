@@ -15,7 +15,7 @@ then
   echo
   echo
   echo
-  echo "No se encuentran los certificados del nodo en /etc/docker/certs.d/ generar en oas-ci-swarm-ca con el comando '/usr/sbin/swarm-ci-create-server-cert swarm server ${fqdn}' luego traer los archivos de oas-ci-swarm-ca '/var/lib/docker-ci-swarm-ca/${fqdn}/*' hasta este servidor en la ruta '/etc/docker/certs.d/' finalmente cambiar el archivo '/etc/ci-swarm-manage/nodes' en oas-ci-server agregando la linea ${fqdn}:2376, para terminar reinicie el servicio ci-swarm-manage en oas-ci-server"
+  echo "No se encuentran los certificados del nodo en /etc/docker/certs.d/ generar en oas-ci-swarm-ca con el comando '/usr/sbin/swarm-ci-create-server-cert server ${fqdn}' luego traer los archivos de oas-ci-swarm-ca '/var/lib/docker-ci-swarm-ca/${fqdn}/*' hasta este servidor en la ruta '/etc/docker/certs.d/' finalmente cambiar el archivo '/etc/ci-swarm-manage/nodes' en oas-ci-server agregando la linea ${fqdn}:2376, para terminar reinicie el servicio ci-swarm-manage en oas-ci-server"
   echo
   echo
   echo
